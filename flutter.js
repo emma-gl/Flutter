@@ -13,7 +13,7 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'fltrbackend',
-    password: 'pass',
+    password: '3mma22',
     dialect: 'postgres',
     port: 5432
 });
@@ -44,7 +44,7 @@ pool.connect((err, client, release) => {
     })
 })
   
-app.get('/flutter', (req, res, next) => {
+app.get('/testdata', (req, res, next) => {
     console.log("TEST DATA :");
     pool.query('Select * from test')
         .then(testData => {
