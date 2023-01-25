@@ -1,6 +1,7 @@
 // Entry Point of the API Server 
   
 const express = require('express');
+require('dotenv').config();
   
 /* Creates an Express application. 
    The express() function is a top-level 
@@ -11,10 +12,10 @@ const Pool = require('pg').Pool;
 const tls = require('node:tls');
   
 const pool = new Pool({
-    user: 'admin',
-    host: 'dpg-cf7b98kgqg47vk2ev6ig-a.oregon-postgres.render.com',
-    database: 'fltrbackend',
-    password: '5ybyVuxFrsl7LdurKbYEKEAlLr4mcKg3',
+    user: process.env.USER,
+    host: process.env.HOST,
+    database: process.env.DATABASE,
+    password: process.env.PASS,
     port: 5432,
     ssl: true
 });
@@ -22,7 +23,7 @@ const pool = new Pool({
 pool.connect();
 console.log("Connected")
 async function view_users(){
-    var query = await pool.query('ADD * FROM users');
+    var query = await pool.query('SELECT * FROM users');
     console.log(query);
 }
 
