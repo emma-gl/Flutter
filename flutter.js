@@ -21,12 +21,21 @@ const pool = new Pool({
   
 pool.connect();
 console.log("Connected")
-async function test(){
-    var query = await pool.query('SELECT * FROM users');
+async function view_users(){
+    var query = await pool.query('ADD * FROM users');
     console.log(query);
 }
 
-test();
+async function add_users(){
+    //ask for user information then add it 
+    var query = await pool.query("INSERT INTO users (first_name, last_name, \
+        city, phone, gender, orientation, email, date_of_birth) VALUES ( \
+            'Jane', 'Doe', 'New York City', '0987654321', 'Female', 'Straight', \
+            'mail@email.com', '2000-10-30')");
+    console.log(query);
+}
+
+view_users();
   
 /* To handle the HTTP Methods Body Parser 
    is used, Generally used to extract the 
