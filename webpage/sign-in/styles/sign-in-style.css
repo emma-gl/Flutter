@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nabla&family=Rubik+80s+Fade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 
 :root {
     --text-deco: 'Nabla', cursive;
+    --text-sans: 'Open Sans', sans-serif;
 
     --color-1: #3838a6;
     --color-2: #3e3e66;
@@ -19,31 +21,39 @@ body {
     margin: 0px;
 }
 
-#menu-items {
-    margin-left: clamp(4rem, 20vw, 48rem);
-    position: relative;
-    z-index: 3;
-}
-
-#menu-items:hover>.menu-item {
-    opacity: 0.3;
-}
-
-#menu-items:hover>.menu-item:hover {
-    opacity: 1;
-}
-
 #menu {
     height: 100vh;
-    display: flex;
     align-items: center;
+}
+
+#sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    position: relative;
+}
+
+#profile-icon {
+    max-width: 25vw;
+    filter: brightness(0) invert(1) sepia(100%) saturate(7488%) hue-rotate(353deg) brightness(75%) contrast(110%);
+}
+
+form {
+    padding: 1em;
+    font-family: var(--text-sans);
+    align-items: center;
+}
+
+form label {
+    color: var(--color-5);
 }
 
 #menu-background-pattern {
     width: 100vw;
     height: 100vh;
 
-    background-image: url('../images/icons/butterfly.png');
+    background-image: url('');
     background-position: 0% 0%;
     background-size: 3vmin 3vmin;
     filter: brightness(20);
