@@ -10,11 +10,10 @@ const app = express();
 const Pool = require('pg').Pool;
   
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
+    user: 'admin',
+    host: 'dpg-cf7b98kgqg47vk2ev6ig-a.oregon-postgres.render.com',
     database: 'fltrbackend',
-    password: '3mma22',
-    dialect: 'postgres',
+    password: '5ybyVuxFrsl7LdurKbYEKEAlLr4mcKg3',
     port: 5432
 });
   
@@ -41,17 +40,19 @@ pool.connect((err, client, release) => {
                 'Error executing query', err.stack)
         }
         console.log("Connected to Database !")
+        const res = pool.query('SELECT * FROM users')
+        console.log(res)
     })
 })
   
-app.get('/testdata', (req, res, next) => {
-    console.log("TEST DATA :");
-    pool.query('Select * from test')
-        .then(testData => {
-            console.log(testData);
-            res.send(testData.rows);
-        })
-})
+// app.get('/testdata', (req, res, next) => {
+//     console.log("TEST DATA :");
+//     pool.query('Select * from test')
+//         .then(testData => {
+//             console.log(testData);
+//             res.send(testData.rows);
+//         })
+// })
   
 // Require the Routes API  
 // Create a Server and run it on the port 3000
