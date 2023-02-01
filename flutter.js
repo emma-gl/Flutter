@@ -10,6 +10,7 @@ require('dotenv').config();
 const app = express();
 const Pool = require('pg').Pool;
 const tls = require('node:tls');
+const PORT = process.env.PORT || 3000;
   
 const pool = new Pool({
     user: process.env.USER,
@@ -84,7 +85,7 @@ view_users();
   
  // Require the Routes API  
  // Create a Server and run it on the port 3000
- const server = app.listen(3000, function () {
+ const server = app.listen(PORT, function () {
      let host = server.address().address
      let port = server.address().port
      // Starting the Server at the port 3000
