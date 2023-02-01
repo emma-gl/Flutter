@@ -22,8 +22,9 @@ const pool = new Pool({
   
 pool.connect();
 console.log("Connected")
+
 async function view_users(){
-    var query = await pool.query('SELECT * FROM users');
+    var query = await pool.query("SELECT * FROM users");
     console.log(query);
 }
 
@@ -36,6 +37,13 @@ async function add_users(){
     console.log(query);
 }
 
+async function delete_user(){
+    //ask for user information then add it 
+    var query = await pool.query("DELETE FROM users WHERE first_name='John'");
+    console.log(query);
+}
+
+add_users();
 view_users();
   
 /* To handle the HTTP Methods Body Parser 
