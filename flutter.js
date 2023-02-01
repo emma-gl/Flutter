@@ -82,10 +82,10 @@ view_users();
 // //         })
 // // })
   
-// // Require the Routes API  
-// // Create a Server and run it on the port 3000
-// const server = app.listen(3000, function () {
-//     let host = server.address().address
-//     let port = server.address().port
-//     // Starting the Server at the port 3000
-// })
+ // Require the Routes API  
+ // Create a Server and run it on the port 3000
+ const server = app.listen(3000, function () {
+     let host = server.address().address
+     let port = server.address().port
+     // Starting the Server at the port 3000
+})
