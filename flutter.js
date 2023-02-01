@@ -45,6 +45,31 @@ async function delete_user(){
 
 add_users();
 view_users();
+
+// Log in API options
+app.post('/api/auth/signup', (req, res, next) =>{
+
+})
+
+app.post('/api/auth/signin', (req, res, next) =>{
+    
+})
+
+app.get('/api/test/all', (req, res, next) =>{
+    
+})
+
+app.get('/api/test/user', (req, res, next) =>{
+    
+})
+
+app.get('/api/test/mod', (req, res, next) =>{
+    
+})
+
+app.get('/api/test/admin', (req, res, next) =>{
+    
+})
   
 /* To handle the HTTP Methods Body Parser 
    is used, Generally used to extract the 
@@ -84,7 +109,9 @@ view_users();
   
  // Require the Routes API  
  // Create a Server and run it on the port 3000
- const server = app.listen(3000, function () {
+ const PORT = process.env.PORT || 3000;
+ const server = app.listen(PORT, function () {
+    console.log(`Server is running on ${PORT}.`)
      let host = server.address().address
      let port = server.address().port
      // Starting the Server at the port 3000
