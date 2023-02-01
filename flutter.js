@@ -43,7 +43,13 @@ async function delete_user(){
     console.log(query);
 }
 
-add_users();
+async function update_user(){
+    //ask for user information then add it 
+    var query = await pool.query("UPDATE users SET city = '' WHERE id == ");
+    console.log(query);
+}
+
+//add_users();
 view_users();
   
 /* To handle the HTTP Methods Body Parser 
