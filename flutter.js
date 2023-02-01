@@ -39,18 +39,23 @@ async function add_users(){
 
 async function delete_user(){
     //ask for user information then add it 
-    var query = await pool.query("DELETE FROM users WHERE first_name='John'");
+    var query = await pool.query("DELETE FROM users WHERE first_name='Jane'");
     console.log(query);
 }
 
 async function update_user(){
     //ask for user information then add it 
-    var query = await pool.query("UPDATE users SET city = '' WHERE id == ");
+    var query = await pool.query("UPDATE users SET city = 'New York City' WHERE first_name = 'John'");
     console.log(query);
 }
 
 //add_users();
+//view_users();
+//delete_user();
+//view_users();
+//update_user();
 view_users();
+
 
 // Log in API options
 app.post('/api/auth/signup', (req, res, next) =>{
