@@ -49,13 +49,6 @@ async function update_user(){
     console.log(query);
 }
 
-//add_users();
-//view_users();
-//delete_user();
-//view_users();
-//update_user();
-view_users();
-
 
 // Log in API options
 app.post('/api/auth/signup', (req, res, next) =>{
