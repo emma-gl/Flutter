@@ -10,7 +10,17 @@ require('dotenv').config();
 const app = express();
 const Pool = require('pg').Pool;
 const tls = require('node:tls');
-  
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// Creates sequelize for comunicating through sql
+const {Sequelize} = require('sequelize'); 
+const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname'); //example for postgres, Database URI required
+
 const pool = new Pool({
     user: process.env.USER,
     host: process.env.HOST,
@@ -50,30 +60,12 @@ async function update_user(){
 }
 
 
-// Log in API options
-app.post('/api/auth/signup', (req, res, next) =>{
 
-})
+// simple route
+app.get("/", (req, res) => {
+ res.json({ message: "Welcome to flutr api" });
+});
 
-app.post('/api/auth/signin', (req, res, next) =>{
-    
-})
-
-app.get('/api/test/all', (req, res, next) =>{
-    
-})
-
-app.get('/api/test/user', (req, res, next) =>{
-    
-})
-
-app.get('/api/test/mod', (req, res, next) =>{
-    
-})
-
-app.get('/api/test/admin', (req, res, next) =>{
-    
-})
   
 /* To handle the HTTP Methods Body Parser 
    is used, Generally used to extract the 
@@ -111,8 +103,16 @@ app.get('/api/test/admin', (req, res, next) =>{
 // //         })
 // // })
   
+
+ 
+
+ // routes
+ require('./app/routes/auth.routes')(app);
+ require('./app/routes/user.routes')(app);
  // Require the Routes API  
  // Create a Server and run it on the port 3000
+ 
+
  const PORT = process.env.PORT || 3000;
  const server = app.listen(PORT, function () {
     console.log(`Server is running on ${PORT}.`)
