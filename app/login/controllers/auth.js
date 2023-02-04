@@ -1,6 +1,6 @@
 const db = require("../models");
-const config = require("../config/auth.config");
-const User = db.user;
+const config = require("../../config/auth.config");
+const Account = db.Account;
 
 const Op = db.Sequelize.Op;
 
@@ -9,7 +9,7 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   // Save User to Database
-  User.create({
+  Account.create({
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   })
@@ -19,19 +19,19 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-  User.findOne({
+  Account.findOne({
     where: {
       username: req.body.username
     }
   })
-    .then(user => {
-      if (!user) {
+    .then(Account => {
+      if (!Account) {
         return res.status(404).send({ message: "User Not found." });
       }
 
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
-        user.password
+        Account.password
       );
 
       if (!passwordIsValid) {
@@ -41,7 +41,7 @@ exports.signin = (req, res) => {
         });
       }
 
-      var token = jwt.sign({ id: user.id }, config.secret, {
+      var token = jwt.sign({ id: Account.id }, config.secret, {
         expiresIn: 86400 // 24 hours
       });
 
