@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Profile page for signing in">
+    <title>Profile</title>
+    <link href="./styles/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="menu">
+        <div id="profile-sidebar">
+            <div id="profile-pic">
+                <img src="../images/icons/user-orange.png">
+            </div>
+            <span>Username</span>
+        </div>
+        <div id="everything-else">
+            <div id="edit"></div>
+            <form id="inputs">
+                <input type="text" id="first_name" name="first_name" placeholder="Jaden">
+                <input type="text" id="last_name" name="last_name" placeholder="Doe">
+                <input type="text" id="city" name="city" placeholder="Springfield, USA">
+                <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555"
+                    pattern="([0-9]{3}) [0-9]{3}-[0-9]{4}">
+                <input type="text" id="gender" name="gender" placeholder="Gender">
+                <input type="text" id="orientation" name="orientation" placeholder="Orientation">
+                <input type="text" id="email" name="email" placeholder="jaden_doe@flutter.com">
+                <input type="text" id="date_of_birth" name="date_of_birth" placeholder="01-01-01">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div id="menu-background-pattern"></div>
+    </div>
+</body>
+
+</html>
