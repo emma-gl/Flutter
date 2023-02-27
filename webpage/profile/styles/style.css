@@ -1,0 +1,49 @@
+#menu {
+    margin: auto;
+    max-width: 90%;
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#inputs {
+    position: relative;
+    z-index: 3;
+    margin: auto;
+    width: 75%;
+}
+
+input[type=submit] {
+    background-color: rgba(243, 243, 243, 0.8)!important;
+}
+
+input[type=submit]:hover{
+    cursor: pointer;
+}
+
+#inputs input {
+    font-family: var(--text-sans);
+    color: var(--color-black);
+    font-size: clamp(0.25rem, 1.5vw, 1.5rem);
+
+    display: block;
+    padding: clamp(1rem, 0.2vw, 4rem) 0rem;
+    margin: clamp(0.5em, 0.25vh, 2rem);
+
+    width: 100%;
+
+    background-color: rgba(243, 243, 243, 0.3);
+
+    border: none;
+    border-bottom: 2px solid;
+    border-color: var(--color-yellow);
+    border-radius: 2px;
+
+}
+
+input::placeholder {
+    padding: 1rem;
+    color: rgba(15, 15, 15, 0.5);
+}
+
