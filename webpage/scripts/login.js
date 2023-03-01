@@ -30,10 +30,11 @@ async function submitProfile() {
 
 async function submitSignIn() {
     let username = document.querySelector("username").value;
+    let password = document.querySelector("password").value;
     
     // response will be the token
     const response = await fetch(urlSignIn, {method: 'POST', body: JSON.stringify({
-        username
+        username, password
     })} );
 }
 
