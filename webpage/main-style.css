@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@100;200;300;400&display=swap');
+
+:root {
+    --text-deco: 'Dancing Script', cursive;
+    --text-sans: 'Poppins', sans-serif;
+    --text-open-sans: 'Open Sans', sans-serif;
+
+    --color-white: #f3f3f3;
+    --color-yellow: #f39c2d;
+    --color-orange: #ef5308;
+    --color-pink: #a22362;
+    --color-purple: #680d9a;
+    --color-blue: #0a06c4;
+    --color-navy: #06066f;
+    --color-black: #0f0f0f;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom left, var(--color-orange), var(--color-pink), var(--color-purple), var(--color-blue));
+    background-size: 150% 150%;
+    animation: rotate-colors 15s linear infinite;
+}
+
+@keyframes rotate-colors {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
