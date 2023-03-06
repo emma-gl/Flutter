@@ -1,8 +1,5 @@
 #menu {
     margin: auto;
-    max-width: 90%;
-
-    height: 100vh;
     display: flex;
     align-items: center;
 }
@@ -47,3 +44,14 @@ input::placeholder {
     color: rgba(15, 15, 15, 0.5);
 }
 
+
+.accountForm {
+    text-align: center;
+    padding: 40px;
+    margin-top: 10px;
+    margin: auto;
+    transform: scale(0.9);
+    width: 800px;
+    height: auto;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
