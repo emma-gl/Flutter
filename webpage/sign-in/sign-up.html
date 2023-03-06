@@ -1,16 +1,15 @@
-<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Flutter - Group Dating Site" />
+    <meta name="description" content="Romance - Group Dating Site" />
     <title>Flutter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-    
     <link rel="stylesheet" href="../main-style.css">
     <link rel="stylesheet" href="./styles/sign-in-style.css" />
 </head>
+
 
 <body>
   <div class="login-root">
@@ -51,33 +50,33 @@
         <div class="formbg-outer">
           <div class="formbg">
             <div class="formbg-inner padding-horizontal--48">
-                <div class="logo">
-                    <h1>Flutter</h1>
-                </div>
-                <h2 class="padding-bottom--48">Where sparks fly</h2>
-
-              <span class="padding-bottom--24">Sign in to your account</span>
-
-              <form id="stripe-login" action="/webpage/feed/feed.html">
+              <h1 class="logo">Flutter</h1>
+              <span class="padding-bottom--15 padding-top--24">Join the 4 million people who have found love using Flutter!</span>
+              <form id="stripe-login">
                 <div class="field padding-bottom--24">
                   <label for="email">Email</label>
-                  <input type="email" name="email" placeholder="Username or Email">
+                  <input type="email" name="email">
                 </div>
-                <div class="field padding-bottom--24">
-                  <div class="grid--50-50">
+
+                <div class="field" >
+                  <div class="grid--50-50 padding-bottom--24">
                     <label for="password">Password</label>
+                    <input type="password" name="password">
                   </div>
-                  <input type="password" name="password" placeholder="Password">
+
+                  <div class="grid--50-50 padding-bottom--24">
+                    <label for="password">Confirm Password:</label>
+                    <input type="password" name="password">
+                  </div>
                 </div>
-                <div class="field padding-bottom--24">
-                  <a href="/webpage/feed/feed.html"><input type="submit" name="submit" value="Continue"></a>
+
+                <div class="field">
+                  <input type="submit" name="submit" value="Continue">
                 </div>
               </form>
             </div>
           </div>
-
           <div class="footer-link padding-top--24">
-            <span>Don't have an account? <a href="/webpage/sign-in/sign-up.html">Sign up</a></span>
             <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
               <span><a href="#">Contact</a></span>
               <span><a href="#">Privacy & terms</a></span>
@@ -90,4 +89,3 @@
 </body>
 
 </html>
-
