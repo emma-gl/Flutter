@@ -22,6 +22,7 @@ async function submitProfile() {
     let orientation = document.querySelector("#orientation").value;
     let email = document.querySelector("#email").value;
     let date_of_birth = document.querySelector("#date_of_birth").value;
+    
     // get the data
     const response = await fetch(urlSignUp, {method: 'POST', body: JSON.stringify({
         first_name, last_name, city, phone, gender, orientation, email, date_of_birth
@@ -38,6 +39,7 @@ async function submitSignIn() {
     })} );
 }
 
+
 async function passwordVerification() {
     let password = document.querySelector('form input[type="password"]').value;
     let confirmPassword = document.querySelector('form input[type="confirmPassword"]').value;
@@ -47,6 +49,7 @@ async function passwordVerification() {
     }
     // else, allow password to go through
 }
+
 
 // Event Listeners for submit buttons
 // (calls a function)

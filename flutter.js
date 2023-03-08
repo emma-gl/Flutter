@@ -1,6 +1,7 @@
 // Entry Point of the API Server 
   
 const express = require('express');
+require('dotenv').config();
   
 /* Creates an Express application. 
    The express() function is a top-level 
@@ -9,20 +10,31 @@ const express = require('express');
 const app = express();
 const Pool = require('pg').Pool;
 const tls = require('node:tls');
-  
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+// Creates sequelize for comunicating through sql
+const {Sequelize} = require('sequelize'); 
+const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname'); //example for postgres, Database URI required
+
 const pool = new Pool({
-    user: 'admin',
-    host: 'dpg-cf7b98kgqg47vk2ev6ig-a.oregon-postgres.render.com',
-    database: 'fltrbackend',
-    password: '5ybyVuxFrsl7LdurKbYEKEAlLr4mcKg3',
+    user: process.env.USER,
+    host: process.env.HOST,
+    database: process.env.DATABASE,
+    password: process.env.PASS,
     port: 5432,
     ssl: true
 });
   
 pool.connect();
 console.log("Connected")
+
 async function view_users(){
-    var query = await pool.query('ADD * FROM users');
+    var query = await pool.query("SELECT * FROM users");
     console.log(query);
 }
 
@@ -35,7 +47,25 @@ async function add_users(){
     console.log(query);
 }
 
-view_users();
+async function delete_user(){
+    //ask for user information then add it 
+    var query = await pool.query("DELETE FROM users WHERE first_name='Jane'");
+    console.log(query);
+}
+
+async function update_user(){
+    //ask for user information then add it 
+    var query = await pool.query("UPDATE users SET city = 'New York City' WHERE first_name = 'John'");
+    console.log(query);
+}
+
+
+
+// simple route
+app.get("/", (req, res) => {
+ res.json({ message: "Welcome to flutr api" });
+});
+
   
 /* To handle the HTTP Methods Body Parser 
    is used, Generally used to extract the 
@@ -73,10 +103,20 @@ view_users();
 // //         })
 // // })
   
-// // Require the Routes API  
-// // Create a Server and run it on the port 3000
-// const server = app.listen(3000, function () {
-//     let host = server.address().address
-//     let port = server.address().port
-//     // Starting the Server at the port 3000
-// })
+
+ 
+
+ // routes
+ require('./app/routes/auth.routes')(app);
+ require('./app/routes/user.routes')(app);
+ // Require the Routes API  
+ // Create a Server and run it on the port 3000
+ 
+
+ const PORT = process.env.PORT || 3000;
+ const server = app.listen(PORT, function () {
+    console.log(`Server is running on ${PORT}.`)
+     let host = server.address().address
+     let port = server.address().port
+     // Starting the Server at the port 3000
+})
