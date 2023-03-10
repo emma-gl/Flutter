@@ -1,13 +1,30 @@
 import filterProfiles from './generateProfile';
 
 // URLs to BackEnd
-let getProfiles = "https://flutterservices.onrender.com/api/account/feed";
+const getProfilesURL = "https://flutterservices.onrender.com/api/account/feed";
 
 function main() {
-    // getProfiles()
-    const response = fetch(getProfiles, {method: 'GET', body: JSON.stringify({
-        id,username,email,firstName,lastName,city,gender,orientation
-    })} );
+  let currentProfileIndex = 0;
+  let profiles = [];
+
+  fetch(getProfilesUrl, { method: 'GET' })
+    .then(response => response.json())
+    .then(data => {
+      profiles = data.profiles;
+      const profileElements = document.querySelectorAll('.profile');
+      profileElements.forEach((element, index) => {
+        element.addEventListener('click', () => {
+          // Get the next profile
+          currentProfileIndex = (currentProfileIndex + 1) % profiles.length;
+          const profile = profiles[currentProfileIndex];
+          // Update the UI with the next profile data
+          // For example:
+          document.getElementById('profile-id').textContent = profile.id;});
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
 function displayProfile() {
