@@ -7,7 +7,7 @@ function main() {
   let currentProfileIndex = 0;
   let profiles = [];
 
-  fetch(getProfilesUrl, { method: 'GET' })
+  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'','token':'')})
     .then(response => response.json())
     .then(data => {
       profiles = data.profiles;

@@ -36,6 +36,10 @@ async function submitSignIn() {
     const response = await fetch(urlSignIn, {method: 'POST', body: JSON.stringify({
         username, password
     })} );
+
+    document.cookie = `flutteruseremailcookie=${username}`;
+    document.cookie = `flutterusertokencookie=${response.token}`;
+
 }
 
 // Event Listeners for submit buttons
