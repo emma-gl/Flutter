@@ -7,7 +7,7 @@ function main() {
   let currentProfileIndex = 0;
   let profiles = [];
 
-  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'','token':'')})
+  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'flutteruseremailcookie','token':'')})
     .then(response => response.json())
     .then(data => {
       profiles = data.profiles;
