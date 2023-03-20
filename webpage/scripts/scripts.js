@@ -1,6 +1,8 @@
 
 // Side Navigation bar
 
+console.log(cookie)
+
 let navBarBool = 0;
 function navBar() {
     if (navBarBool == 0) {

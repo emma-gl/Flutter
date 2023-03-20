@@ -3,11 +3,17 @@ import filterProfiles from './generateProfile';
 // URLs to BackEnd
 const getProfilesURL = "https://flutterservices.onrender.com/api/account/feed";
 
+
+function getCookie (name) {
+  let value = `; ${document.cookie}`;
+  let parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function main() {
   let currentProfileIndex = 0;
   let profiles = [];
-
-  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'','token':'')})
+  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify(`email:${getCookie('flutteruseremailcookie')}`,`token:${getCookie('flutterusertokencookie')}}`)
     .then(response => response.json())
     .then(data => {
       profiles = data.profiles;

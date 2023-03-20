@@ -14,11 +14,11 @@ let urlSignUp = "https://flutterservices.onrender.com/api/auth/signup";
 
 
 // route to build the profile view
-router.get("/profile", feedController.buildProfile)
+// router.get("/profile", feedController.buildProfile)
 
 
 // Route for account information
-// router.get("/account", accController)
+// router.get("/sign_in", feedController.submitSignIn)
 
 
 

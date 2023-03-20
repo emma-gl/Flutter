@@ -2,5 +2,5 @@
 const pool = require("../")
 
 async function getUserProfile(){
-    return await pool.query("SELECT * FROM public.users")
+    // return await pool.query("SELECT * FROM public.users WHERE city = 'Rexburg' and gender = 'M' ORDER BY user_id ASC;")
   }
