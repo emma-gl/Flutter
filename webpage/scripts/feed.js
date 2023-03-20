@@ -13,7 +13,8 @@ function getCookie (name) {
 function main() {
   let currentProfileIndex = 0;
   let profiles = [];
-  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify(`email:${getCookie('flutteruseremailcookie')}`,`token:${getCookie('flutterusertokencookie')}}`)
+
+  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'','token':'')})
     .then(response => response.json())
     .then(data => {
       profiles = data.profiles;
