@@ -9,8 +9,6 @@ let urlSignUp = "https://flutterservices.onrender.com/api/auth/signup";
 
 // Variables for submit buttons
 
-
-
 // submit profile function
 // async function submitProfile() {
 //     // variables
@@ -56,12 +54,39 @@ async function submitSignIn() {
 
 
 
+
 async function checkValidation(email, password) {
 
-const json = {"email": email, "password": password};
+    let json = {"email": email, "password": password};
+    
+    const profileSubmit = document.querySelector('form input[type="submit"]');
+    const signInSubmit = document.querySelector('form input[type="submit"]');
+    
+        // response will be the token
+    console.log(json);
 
-const profileSubmit = document.querySelector('form input[type="submit"]');
-const signInSubmit = document.querySelector('form input[type="submit"]');
+    // const parsedResponse = await JSON.parse(json);
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const response = await fetch(urlSignIn, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: myHeaders,
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(json), // body data type must match "Content-Type" header
+        });
+    
+        // const response = await fetch(testSignIn, {method: 'POST', headers: {
+        //     "Content-Type": "application/json",
+        //     // 'Content-Type': 'application/x-www-form-urlencoded',
+        //   }, body: parsedResponse});
+    
+        return response;
+    }
 
 
 // submit profile function
@@ -82,37 +107,6 @@ async function submitProfile() {
     })} );
 }
 
-async function submitSignIn() {
-    let username = document.querySelector('form input[type="email"]').value;
-    let password = document.querySelector('form input[type="password"]').value;
-    
-    // response will be the token
-    console.log(json);
-    // const parsedResponse = await JSON.parse(json);
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-
-
-    const response = await fetch(urlSignIn, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: myHeaders,
-        redirect: "follow", // manual, *follow, error
-        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        body: JSON.stringify(json), // body data type must match "Content-Type" header
-      });
-
-    // const response = await fetch(testSignIn, {method: 'POST', headers: {
-    //     "Content-Type": "application/json",
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   }, body: parsedResponse});
-
-    return response;
-}
-
-
 async function passwordVerification() {
     let password = document.querySelector('form input[type="password"]').value;
     let confirmPassword = document.querySelector('form input[type="confirmPassword"]').value;
@@ -127,4 +121,3 @@ async function passwordVerification() {
 // Event Listeners for submit buttons
 // const profileSubmit = document.querySelector("#profile_signup_submit");
 // document.getElementById("sign_in_submit").addEventListener("click", submitSignIn());
-
