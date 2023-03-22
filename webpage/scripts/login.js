@@ -1,6 +1,4 @@
 // For SERVER COMMUNICATION
-
-
 // URLs to BackEnd: Main, Signup, SignIn
 let urlMain = "https://flutterservices.onrender.com";
 let urlSignIn = "https://flutterservices.onrender.com/api/auth/signin";
@@ -34,25 +32,25 @@ async function submitSignIn() {
 
     let response = await checkValidation(username, password)
     console.log(response)
-
-
-    if (response.status == 200) {
-        let token = await response.body;
-        console.log(token);
-        console.log(token.token);
-        // If response.status == 200, sign in
-        document.cookie = `flutteruseremailcookie=${username}`;
-        document.cookie = `flutterusertokencookie=${response.token}`;
-
-        document.getElementById("error_message").innerHTML = `${document.cookie}`
+    
+    if (response != false) {
+        console.log(document.cookie)
+        // check and see if cookie is there / signed in 
+        if (document.cookie === "") {
+            document.cookie = `flutteruseremailcookie=${username}` + `;path=/`;
+            document.cookie = `flutterusertokencookie=${response.token}` + `;path=/`;
+            // + `;path=/`
+            console.log(document.cookie)
+            document.getElementById("error_message").innerHTML = `${document.cookie}`
+        } else {
+            window.location.href = '../feed/feed.html';
+        }
     }
     else {
         // if not, throw error message onto page
         document.getElementById("error_message").innerHTML = "Invalid Username or Password"
     }
 }
-
-
 
 
 async function checkValidation(email, password) {
@@ -62,7 +60,7 @@ async function checkValidation(email, password) {
     const profileSubmit = document.querySelector('form input[type="submit"]');
     const signInSubmit = document.querySelector('form input[type="submit"]');
     
-        // response will be the token
+    // response will be the token
     console.log(json);
 
     // const parsedResponse = await JSON.parse(json);
@@ -79,13 +77,18 @@ async function checkValidation(email, password) {
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(json), // body data type must match "Content-Type" header
         });
-    
+        
         // const response = await fetch(testSignIn, {method: 'POST', headers: {
         //     "Content-Type": "application/json",
         //     // 'Content-Type': 'application/x-www-form-urlencoded',
         //   }, body: parsedResponse});
-    
-        return response;
+        if (response.status == 200) {
+            let data = await response.json()
+            return data;
+        } else {
+            return false;
+        }
+        
     }
 
 

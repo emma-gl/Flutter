@@ -1,23 +1,29 @@
-import filterProfiles from './generateProfile';
+// import filterProfiles from './generateProfile';
+
+if (document.cookie == null) {
+  window.location.href = '../sign-in/sign-in.html';
+} 
 
 // URLs to BackEnd
-const getProfilesURL = "https://flutterservices.onrender.com/api/account/feed";
-
-
-function getCookie (name) {
-  let value = `; ${document.cookie}`;
-  let parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
 function main() {
+  let getProfilesURL = "https://flutterservices.onrender.com/api/account/";
   let currentProfileIndex = 0;
   let profiles = [];
+  const email = getCookie("flutteruseremailcookie");
+  const token = getCookie("flutterusertokencookie");
 
-  fetch(getProfilesUrl, { method: 'GET' },{body: JSON.stringify('email':'','token':'')})
+  console.log(email);
+  console.log(token);
+
+  let json = {"email": email, "token": token};
+
+  fetch(getProfilesURL, { method: 'GET' },{body: JSON.stringify(json)})
     .then(response => response.json())
     .then(data => {
       profiles = data.profiles;
+      
+      console.log(profiles)
+      
       const profileElements = document.querySelectorAll('.profile');
       profileElements.forEach((element, index) => {
         element.addEventListener('click', () => {
@@ -34,7 +40,17 @@ function main() {
     });
 }
 
-function displayProfile() {
+
+function getCookie (name) {
+  let value = `; ${document.cookie}`;
+  let parts = value.split(`; ${name}=`);
+  
+  if (parts.length === 2) { 
+    return parts.pop().split(';').shift(); 
+  }
+}
+
+function displayProfile(id) {
 
 }
 
@@ -47,3 +63,4 @@ function animation() {
 }
 
 
+main();
