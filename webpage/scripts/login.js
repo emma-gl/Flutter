@@ -4,6 +4,7 @@
 // URLs to BackEnd: Main, Signup, SignIn
 let urlMain = "https://flutterservices.onrender.com";
 let urlSignIn = "https://flutterservices.onrender.com/api/auth/signin";
+let testSignIn = "http://localhost:3000/api/auth/signin";
 let urlSignUp = "https://flutterservices.onrender.com/api/auth/signup";
 
 // Variables for submit buttons
@@ -36,24 +37,28 @@ async function submitSignIn() {
     let response = await checkValidation(username, password)
     console.log(response)
 
+
     if (response.status == 200) {
+        let token = await response.body;
+        console.log(token);
+        console.log(token.token);
         // If response.status == 200, sign in
         document.cookie = `flutteruseremailcookie=${username}`;
         document.cookie = `flutterusertokencookie=${response.token}`;
 
         document.getElementById("error_message").innerHTML = `${document.cookie}`
-    // }
-    // else {
+    }
+    else {
         // if not, throw error message onto page
         document.getElementById("error_message").innerHTML = "Invalid Username or Password"
-    // }
+    }
 }
-}
+
 
 
 async function checkValidation(email, password) {
 
-    const json = `{"email": "${email}", "password": "${password}"}`
+const json = {"email": email, "password": password};
 
 const profileSubmit = document.querySelector('form input[type="submit"]');
 const signInSubmit = document.querySelector('form input[type="submit"]');
@@ -81,10 +86,28 @@ async function submitSignIn() {
     let username = document.querySelector('form input[type="email"]').value;
     let password = document.querySelector('form input[type="password"]').value;
     
-
     // response will be the token
     console.log(json);
-    const response = await fetch(urlSignIn, {method: 'POST', body: JSON.parse(json)});
+    // const parsedResponse = await JSON.parse(json);
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+
+    const response = await fetch(urlSignIn, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: myHeaders,
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(json), // body data type must match "Content-Type" header
+      });
+
+    // const response = await fetch(testSignIn, {method: 'POST', headers: {
+    //     "Content-Type": "application/json",
+    //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //   }, body: parsedResponse});
 
     return response;
 }
