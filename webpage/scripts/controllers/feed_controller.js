@@ -15,4 +15,7 @@ accCont.buildProfile = async function (req, res, next) {
 
 };
 
-module.exports = buildProfile;
+
+
+    
+module.exports = { buildProfile };
