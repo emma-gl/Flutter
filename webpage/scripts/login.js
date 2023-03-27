@@ -37,8 +37,8 @@ async function submitSignIn() {
         console.log(document.cookie)
         // check and see if cookie is there / signed in 
         if (document.cookie === "") {
-            document.cookie = `flutteruseremailcookie=${username}` + `;path=/`;
-            document.cookie = `flutterusertokencookie=${response.token}` + `;path=/`;
+            document.cookie = `flutteruseremailcookie=${username}` + `; domain=; path=/`;
+            document.cookie = `flutterusertokencookie=${response.token}` + `; domain=; path=/`;
             // + `;path=/`
             console.log(document.cookie)
             document.getElementById("error_message").innerHTML = `${document.cookie}`
