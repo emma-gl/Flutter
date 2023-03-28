@@ -41,10 +41,12 @@ async function submitSignIn() {
             document.cookie = `flutterusertokencookie=${response.token}` + `; domain=; path=/`;
             // + `;path=/`
             console.log(document.cookie)
-            document.getElementById("error_message").innerHTML = `${document.cookie}`
+            document.getElementById("error_message").innerHTML = `${document.cookie}`;
+            window.location.href = '../feed/feed.html';
         } else {
             window.location.href = '../feed/feed.html';
         }
+
     }
     else {
         // if not, throw error message onto page
@@ -67,7 +69,7 @@ async function checkValidation(email, password) {
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
-    const response = await fetch(urlSignIn, {
+    const response = await fetch(testSignIn, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
