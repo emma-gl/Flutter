@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@100;200;300;400&display=swap');
+
+:root {
+    --text-deco: 'Dancing Script', cursive;
+    --text-sans: 'Poppins', sans-serif;
+    --text-open-sans: 'Open Sans', sans-serif;
+
+    --color-white: #f3f3f3;
+    --color-yellow: #f39c2d;
+    --color-orange: #ef5308;
+    --color-pink: #a22362;
+    --color-purple: #680d9a;
+    --color-blue: #0a06c4;
+    --color-navy: #06066f;
+    --color-black: #0f0f0f;
+
+    --color-1: #3838a6;
+    --color-2: #3e3e66;
+    --color-3: #d16c37;
+    --color-4: #e29948;
+    --color-5: #ebdff4;
+    --color-6: #916faf;
+    --color-7: #452c57;
+    --color-8: #120B16;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+  }
+  
+
+/* body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to bottom left, var(--color-orange), var(--color-pink), var(--color-purple), var(--color-blue));
+    background-size: 150% 150%;
+    animation: rotate-colors 15s linear infinite;
+} */
+
+  /* The side navigation menu */
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: linear-gradient(to bottom left, var(--color-orange), var(--color-pink), var(--color-purple), var(--color-blue));
+    background-size: 150% 150%;
+    animation: rotate-colors 10s linear infinite;
+    color: white;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .menu-button {
+    transform: scale(0.75);
+    border: none;
+    cursor: pointer;
+    display: flex;
+  }
+  .line {
+    fill: none;
+    stroke: var(--color-2);
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 4;
+  }
+  .line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 4;
+  }
+  .line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 4;
+  }
+  .opened .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 4;
+  }
+  .opened .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 4;
+  }
+  .opened .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 4;
+  }
+
+  .navigationBar {
+    position: fixed;
+    z-index: 10;
+    background-color: #fff;
+    width: 100px;
+    height: 100%;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 60px 0px 0px 125px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: var(--color-8);
+    background-color: #ffffffe8;
+    transition: 0.5s;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+  }
+  
+  .profile-display {
+    margin: auto;
+    width: 600px;
+    height: 800px;
+    border: black 5px solid;
+  }
+  
+  .uploadImage {
+    display: block;
+    margin: auto;
+    max-width: 950px;
+  }
+  
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 300px;
+    height: 400px;
+    cursor: pointer;
+  }
+  
+  input[type="file"] {
+    right: 100%;
+    bottom: 100%;
+  }
+  
+  .prompts {
+    text-align: center;
+  }
+
+  .padding-top-24 {
+    padding-top: 50px;
+    }
+  
+  
+    
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  @keyframes rotate-colors {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    25% {
+        background-position: 100% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
