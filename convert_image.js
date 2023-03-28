@@ -1,5 +1,6 @@
 function toBase64(file){
-  //const fileInput = document.getElementById('file-input');
+  // convert the file (image) submitted by the user to a base64 string 
+  // in order to be stored in the database
 
   fileInput.addEventListener('change', async () => {
     const file = fileInput.files[0];
@@ -31,6 +32,7 @@ async function fileToBase64(file) {
 }
 
 function base64ToImage(base64String) {
+  //converts a passed-in base64 back to image type in order to be displayed
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {

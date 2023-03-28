@@ -30,10 +30,11 @@ let urlSignUp = "https://flutterservices.onrender.com/api/auth/signup";
 
 
 async function submitSignIn() {
+    //takes in user-entered credentials
     let username = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     console.log(username, password)
-
+    //validates credentials
     let response = await checkValidation(username, password)
     console.log(response)
 
@@ -57,7 +58,7 @@ async function submitSignIn() {
 
 
 async function checkValidation(email, password) {
-
+//call to server to check if credentials are valid in database
 const json = {"email": email, "password": password};
 
 const profileSubmit = document.querySelector('form input[type="submit"]');
@@ -114,6 +115,7 @@ async function submitSignIn() {
 
 
 async function passwordVerification() {
+    //verify that password is in database
     let password = document.querySelector('form input[type="password"]').value;
     let confirmPassword = document.querySelector('form input[type="confirmPassword"]').value;
 
