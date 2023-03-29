@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <link rel="stylesheet" href="../main-style.css" >
     <!-- <link href="./styles/style.css" rel="stylesheet"> -->
-    <script src="/webpage/scripts/scripts.js" defer></script>
-    <script src="/webpage/scripts/feed.js" defer></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
 <header>
@@ -34,11 +37,31 @@
     </div>
 </header>
 
-<body>
+<body >
     <div id="main">
-        <div class="profile-display">  
+        <div id="profile-display"> 
+            <img src="/webpage/images/icons/dating_app_photo.jpeg" alt="generic photo of a woman" id="photo_one">
+
+            <div class="title">
+                <h2 id="first_name"></h2>
+                <p id="gender"></p>
+                <p id="age"></p>
+            </div>
         </div>
+        
+
+        <button id="swipe_yes" class="">
+            <img src="/webpage/images/icons/like.png" alt="A simple button for telling us you're interested in this person!">
+        </button>
+
+        <button id="swipe_no" class="">
+            <img src="/webpage/images/icons/dislike.png" alt="A simple button for telling us you're not interested in this person,">
+        </button>
+
     </div>    
 </body>
 
+
+<script src="/webpage/scripts/scripts.js"></script>
+<script src="/webpage/scripts/feed.js"></script>
 </html>
