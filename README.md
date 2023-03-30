@@ -1,9 +1,10 @@
 # Flutter App
 
 # Overview
-This repository is the front end for our dating site, Flutter. 
 
-[Software Demo Video](http://youtube.link.goes.here/)
+This is a frontend for the Flutter Dating Web Application which consists of user interface connected to a backend* which communicates with the account database. This website consists of multiple sites including a sign in/signup and a feed page. Once a user enters their credentials, they are authenticated and logged in to their account where they are able to acccess their feed and update account details. 
+
+[Backend Flutter Application Repository](https://github.com/rgibbons131/FlutterBackEnd)
 
 # Development Environment
 * Visual Studio Code
